@@ -50,20 +50,18 @@ function New-AesManagedObject {
 }
 
 function New-AesKey {
-    [CmdletBinding()]
-
-    $aesManaged = New-AesManagedObject
-    $aesManaged.KeySize = 256
-    $aesManaged.GenerateKey()
-    [System.Convert]::ToBase64String($aesManaged.Key)
+    psUsing ($aesManaged = New-AesManagedObject) {
+        $aesManaged.KeySize = 256
+        $aesManaged.GenerateKey()
+        [System.Convert]::ToBase64String($aesManaged.Key)
+    }
 }
 
 function New-AesIV() {
-    [CmdletBinding()]
-
-    $aesManaged = New-AesManagedObject
-    $aesManaged.GenerateIV()
-    [System.Convert]::ToBase64String($aesManaged.IV)
+    psUsing ($aesManaged = New-AesManagedObject) {
+        $aesManaged.GenerateIV()
+        [System.Convert]::ToBase64String($aesManaged.IV)
+    }
 }
 
 function Protect-Aes {
