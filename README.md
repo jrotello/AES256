@@ -3,6 +3,12 @@ A PowerShell module for performing basic AES-256 operations. Adapted from https:
 
 ## Installation
 
+This module is hosted in the [PowerShell Gallery](https://www.powershellgallery.com/packages/AES256/).
+
+```PowerShell
+Install-Module -Name AES256
+```
+
 ## Usage
 
 ```PowerShell
